@@ -1,70 +1,62 @@
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+
+import Dashboard from './pages/Dashboard'
+import Projects from './pages/Projects'
+import CodeReview from './pages/CodeReview'
+import Debugging from './pages/Debugging'
+import Testing from './pages/Testing'
+import Reports from './pages/Reports'
+
 function App() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      {/* Header */}
-      <header className="border-b border-slate-800 bg-slate-900">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div>
-            <h1 className="text-2xl font-bold">
+    <BrowserRouter>
+      <div className="min-h-screen bg-slate-950 text-white">
+        <header className="border-b border-slate-800 bg-slate-900">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+            <Link to="/" className="text-xl font-bold">
               AI Code Review Platform
-            </h1>
-            <p className="text-sm text-slate-400">
-              Analyze • Debug • Fix • Test • Verify
-            </p>
+            </Link>
+
+            <nav className="flex gap-5 text-sm text-slate-300">
+              <Link to="/" className="hover:text-white">
+                Dashboard
+              </Link>
+
+              <Link to="/projects" className="hover:text-white">
+                Projects
+              </Link>
+
+              <Link to="/review" className="hover:text-white">
+                Code Review
+              </Link>
+
+              <Link to="/debugging" className="hover:text-white">
+                Debugging
+              </Link>
+
+              <Link to="/testing" className="hover:text-white">
+                Testing
+              </Link>
+
+              <Link to="/reports" className="hover:text-white">
+                Reports
+              </Link>
+            </nav>
           </div>
+        </header>
 
-          <button className="rounded-lg bg-violet-600 px-4 py-2 font-medium hover:bg-violet-500">
-            New Project
-          </button>
-        </div>
-      </header>
-
-      {/* Main */}
-      <main className="mx-auto max-w-7xl px-6 py-8">
-        <h2 className="mb-6 text-xl font-semibold">
-          Dashboard
-        </h2>
-
-        {/* Statistics */}
-        <div className="grid gap-4 md:grid-cols-4">
-          <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
-            <p className="text-sm text-slate-400">Projects</p>
-            <p className="mt-2 text-3xl font-bold">0</p>
-          </div>
-
-          <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
-            <p className="text-sm text-slate-400">Issues Found</p>
-            <p className="mt-2 text-3xl font-bold">0</p>
-          </div>
-
-          <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
-            <p className="text-sm text-slate-400">Fixes Generated</p>
-            <p className="mt-2 text-3xl font-bold">0</p>
-          </div>
-
-          <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
-            <p className="text-sm text-slate-400">Tests Passed</p>
-            <p className="mt-2 text-3xl font-bold">0</p>
-          </div>
-        </div>
-
-        {/* Project area */}
-        <div className="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-6">
-          <h3 className="text-lg font-semibold">
-            Start a Code Review
-          </h3>
-
-          <p className="mt-2 text-slate-400">
-            Create a project and upload your source code to begin
-            AI-powered analysis.
-          </p>
-
-          <button className="mt-5 rounded-lg bg-violet-600 px-5 py-2.5 font-medium hover:bg-violet-500">
-            Create Your First Project
-          </button>
-        </div>
-      </main>
-    </div>
+        <main className="mx-auto max-w-7xl px-6 py-8">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/review" element={<CodeReview />} />
+            <Route path="/debugging" element={<Debugging />} />
+            <Route path="/testing" element={<Testing />} />
+            <Route path="/reports" element={<Reports />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
