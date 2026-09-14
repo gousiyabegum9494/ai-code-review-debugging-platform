@@ -1,4 +1,4 @@
 code_review.db
 venv/
 test.py
-__pyache__/
+__pycache__/
