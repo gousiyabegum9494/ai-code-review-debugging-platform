@@ -3,6 +3,7 @@ from fastapi import APIRouter, Depends, File, UploadFile, HTTPException
 from sqlalchemy.orm import Session
 
 from database.db import get_db
+from models.project import Project
 from models.code_file import CodeFile
 
 
@@ -59,6 +60,16 @@ async def upload_code(
     db: Session = Depends(get_db)
 ):
 
+    project = db.query(Project).filter(
+        Project.id == project_id
+    ).first()
+
+    if not project:
+        raise HTTPException(
+            status_code=404,
+            detail="Project not found"
+        )
+
     if not file.filename:
         raise HTTPException(
             status_code=400,
@@ -102,6 +113,16 @@ def get_project_code(
     project_id: int,
     db: Session = Depends(get_db)
 ):
+
+    project = db.query(Project).filter(
+        Project.id == project_id
+    ).first()
+
+    if not project:
+        raise HTTPException(
+            status_code=404,
+            detail="Project not found"
+        )
 
     return db.query(CodeFile).filter(
         CodeFile.project_id == project_id
