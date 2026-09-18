@@ -7,7 +7,7 @@ from models.code_file import CodeFile
 
 from routers.projects import router as project_router
 from routers.code_files import router as code_router
-
+from routers.review import router as review_router
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -33,6 +33,7 @@ app.add_middleware(
 # Register routers
 app.include_router(project_router)
 app.include_router(code_router)
+app.include_router(review_router)
 
 
 # Home API
