@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Lab | Module 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">DL</span>
+      <span>Debug Lab <small>Module 03</small></span>
+    </a>
+    <span class="status"><i></i> Local workspace</span>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <p class="eyebrow">AI debugging studio</p>
+      <h1>Understand the bug.<br><em>Own the fix.</em></h1>
+      <p class="lede">Paste an error and its code. Get a clear explanation, a repair path, and practice only when it helps.</p>
+    </section>
+
+    <section class="workspace">
+      <form id="debug-form" class="panel input-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">01 / Diagnose</p>
+            <h2>Bring a bug</h2>
+          </div>
+          <span class="step">INPUT</span>
+        </div>
+
+        <label for="language">Language</label>
+        <select id="language">
+          <option>Python</option>
+          <option>JavaScript</option>
+          <option>Java</option>
+          <option>C++</option>
+        </select>
+
+        <label for="code">Code</label>
+        <textarea id="code" required spellcheck="false">print(total)</textarea>
+
+        <div class="row">
+          <div class="field-grow">
+            <label for="error-message">Error message</label>
+            <input id="error-message" placeholder="Optional: paste the traceback here">
+          </div>
+          <div class="line-field">
+            <label for="error-line">Line</label>
+            <input id="error-line" type="number" min="1" value="1">
+          </div>
+        </div>
+
+        <label class="check-label">
+          <input id="include-practice" type="checkbox" checked>
+          <span>Offer a practice exercise</span>
+        </label>
+
+        <button class="primary-button" type="submit">
+          <span>Analyze error</span><b>→</b>
+        </button>
+        <p id="form-error" class="form-error" role="alert"></p>
+      </form>
+
+      <section id="empty-state" class="panel empty-panel">
+        <div class="empty-icon">?</div>
+        <p class="eyebrow">02 / Learn</p>
+        <h2>Your explanation<br>will appear here.</h2>
+        <p>Every result is organized around the cause, the correction, and the lesson behind it.</p>
+      </section>
+
+      <section id="result" class="result-panel hidden">
+        <div class="result-head">
+          <div>
+            <p class="eyebrow">02 / Learn</p>
+            <h2 id="error-title">Error explanation</h2>
+          </div>
+          <span id="severity" class="severity">HIGH</span>
+        </div>
+
+        <div class="explanation-grid">
+          <article class="explanation-card accent-card">
+            <span class="card-label">In plain English</span>
+            <p id="simple-explanation"></p>
+          </article>
+          <article class="explanation-card">
+            <span class="card-label">Root cause</span>
+            <p id="root-cause"></p>
+          </article>
+        </div>
+
+        <div class="fix-block">
+          <div class="block-head"><span class="card-label">Suggested fix</span><span id="location"></span></div>
+          <p id="suggested-fix"></p>
+          <pre id="corrected-code" class="code-output hidden"></pre>
+          <ul id="fix-explanation" class="clean-list"></ul>
+        </div>
+
+        <div class="prevention-block">
+          <span class="card-label">Remember this</span>
+          <ul id="prevention-tips" class="clean-list"></ul>
+        </div>
+
+        <div class="learning-summary">
+          <span class="summary-mark">✓</span>
+          <div><span class="card-label">Learning summary</span><p id="learning-summary"></p></div>
+        </div>
+
+        <div id="practice-card" class="practice-card hidden">
+          <div class="practice-heading"><div><span class="card-label">Optional practice</span><h3 id="practice-concept"></h3></div><span class="practice-tag">TRY IT</span></div>
+          <p id="practice-prompt"></p>
+          <pre id="practice-code" class="code-output"></pre>
+          <p id="practice-hint" class="hint"></p>
+          <div class="practice-answer"><input id="practice-answer" placeholder="Write your answer"><button id="check-practice" class="secondary-button" type="button">Check answer</button></div>
+          <p id="practice-feedback" class="feedback"></p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
