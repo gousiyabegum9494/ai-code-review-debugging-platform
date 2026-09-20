@@ -4,3 +4,8 @@ python-multipart
 sqlalchemy
 psycopg2-binary
 pydantic
+openai
+python-dotenv
+semgrep
+tree-sitter
+tree-sitter-python
